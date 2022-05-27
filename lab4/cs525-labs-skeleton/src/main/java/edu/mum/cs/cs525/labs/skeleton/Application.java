@@ -2,11 +2,13 @@ package edu.mum.cs.cs525.labs.skeleton;
 
 public class Application {
 	public static void main(String[] args) {
-		AccountService accountService = new AccountServiceImpl();
+		// we change the type of accoun dao here.
+		// we don't touch account service for that
+		AccountService accountService = new AccountServiceImpl(new MockAccountDAO());
 
 		// create 2 accounts;
-		accountService.createAccount("1263862", "Frank Brown", AccountType.CHECKING);
-		accountService.createAccount("4253892", "John Doe", AccountType.SAVING);
+		accountService.createAccount("1263862", "Frank Brown");
+		accountService.createAccount("4253892", "John Doe");
 		// use account 1;
 		accountService.deposit("1263862", 240);
 		accountService.deposit("1263862", 529);
@@ -14,9 +16,7 @@ public class Application {
 		// use account 2;
 		accountService.deposit("4253892", 12450);
 		accountService.transferFunds("4253892", "1263862", 100, "payment of invoice 10232");
-		//add P2 interest
-
-		// show balances with interest
+		// show balances
 
 		for (Account account : accountService.getAllAccounts()) {
 			Customer customer = account.getCustomer();
@@ -36,7 +36,6 @@ public class Application {
 			
 			System.out.println("----------------------------------------" + "----------------------------------------");
 			System.out.printf("%30s%30s%20.2f\n\n", "", "Current Balance:", account.getBalance());
-			System.out.printf("%30s%30s%20.2f\n\n", "", "Interest:", accountService.addInterest(account.getAccountNumber()));
 		}
 	}
 

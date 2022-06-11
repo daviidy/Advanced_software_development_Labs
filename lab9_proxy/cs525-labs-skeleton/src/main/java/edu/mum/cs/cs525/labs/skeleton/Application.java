@@ -4,7 +4,7 @@ import java.lang.reflect.Proxy;
 
 public class Application {
 	public static void main(String[] args) throws InterruptedException {
-		Complex comp = new ComplexClass();
+		/*Complex comp = new ComplexClass();
 		Complex proxy = (Complex) Proxy.newProxyInstance(
 				Complex.class.getClassLoader(),
 				new Class[]{Complex.class},
@@ -13,5 +13,8 @@ public class Application {
 		UsefulService usefulService = new UsefulService(proxy);
 		usefulService.showAnotherTask();
 		usefulService.showComplicatedTask();
+
+		 */
+
 	}
 }
